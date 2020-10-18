@@ -1,4 +1,4 @@
 程序运行方法:  
-cd /PokemonProject/Map  
+cd /PokemonProject/src/Map  
 ./game  
 
