@@ -1,5 +1,4 @@
-程序运行方法
-cd /PokemonProject/Map
-./game
-即可
+程序运行方法:  
+cd /PokemonProject/Map  
+./game  
 
