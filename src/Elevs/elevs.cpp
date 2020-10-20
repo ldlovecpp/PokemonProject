@@ -23,7 +23,7 @@ void Elevs::set_stus(string str,int times)
 }
 bool Elevs::stus_is_set(string str)
 {
-   return stus.count(str);
+   return stus[str];
 }
 bool Elevs::remove_stus(string str)
 {
@@ -332,11 +332,11 @@ void Elevs::set_buff(string buff_name)
 }
 bool Elevs::remove_buff(string buff_name)
 {
-    if(buff.count(buff_name)==0)
+    if(buff[buff_name]==0)
     {
       return false;
     }
-    else if(buff.count(buff_name)==1)
+    else if(buff[buff_name]==1)
     {
       buff.erase(buff_name);
     }
@@ -348,7 +348,7 @@ bool Elevs::remove_buff(string buff_name)
 }
 int Elevs::in_buff(string buff_name)
 {
-  return buff.count(buff_name);
+  return buff[buff_name];
 }
 void Elevs::read_can_use_skill()
 {

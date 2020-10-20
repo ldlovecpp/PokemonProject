@@ -136,5 +136,5 @@ void Skill::remove_buff(string name)
 }
 bool Skill::in_buff(string name)
 {
-   return buff.count(name);
+   return buff[name];
 }
