@@ -31,14 +31,14 @@ void Block::parse(Roles* roles)
     int n = roles->get_pocket().size();
     for(int i=0;i<n;i++)
     {
-   int r = rand()%153;
-   Elevs elvs;
-   stringstream ss;
-   ss<<r;
-   string tmp;
-   ss>>tmp;
-   elvs.create_elevs_by_no(tmp);
-   trainer.add_Elevs(elvs);
+     int r = rand()%153;
+     Elevs elvs;
+     stringstream ss;
+     ss<<r;
+     string tmp;
+     ss>>tmp;
+     elvs.create_elevs_by_no(tmp);
+     trainer.add_Elevs(elvs);
     }
    Player_Vs_Wild pvw(roles,&trainer);
    pvw.Fight();
@@ -47,48 +47,6 @@ void Block::parse(Roles* roles)
   {
    Store store(roles);
    store.choice_arc();
-  }
-  else if(type == "美")
-  {
-   system("cls");
-   cout << "你: 美女好!!"<<endl;
-   cout <<"按Enter键继续.." <<endl;
-   getchar();
-   cout << "美女: 你好,去干嘛啊" <<endl;
-   cout <<"按Enter键继续.." <<endl;
-   getchar();
-   cout << "你: 去打野怪啊" <<endl;
-   cout <<"按Enter键继续.." <<endl;
-   getchar();
-   cout << "美女: 小心啊" <<endl;
-   cout <<"按Enter键继续.." <<endl;
-   getchar();
-   cout << "你: 好的"<<endl;
-   cout <<"按Enter键继续.." <<endl;
-   getchar();
-   bool key=true;
-   for(int i=0;i<roles->get_pocket().size();i++)
-   {
-     if(roles->get_pocket()[i].getname()=="皮卡丘") 
-     {
-       key=false;
-       break;
-     }
-   }
-   if(key==true)
-   {
-   cout << "美女 很好,你很棒,送你你置皮卡丘,去吧,皮卡丘 " <<endl;
-   getchar();
-   system("cls");
-   cout << "你获得了精灵皮卡丘!!"<<endl;
-   cout << "恭喜你完成了获得皮卡丘的任务,奖励金钱5000"<<endl;
-   roles->add_money(1000);
-   roles->add_Elevs("皮卡丘");
-   }
-   else 
-   {
-   cout << "你已经拥有了皮卡丘,去把皮卡丘"<<endl;
-   }
   }
   init_keyboard();
 }
@@ -330,6 +288,7 @@ void Game::create_map()
   main_map->init(9,24);
   cur_map=main_map;
 }    
+//
 void Game::run()
 {
   while(1)

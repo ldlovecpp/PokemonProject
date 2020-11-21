@@ -159,25 +159,45 @@ public:
 public:
   int get_catch_rate();
 private:
-  vector<Skill>skill;
-  unordered_map<string,bool>can_use;
-  unordered_map<string,int>skill_map;
-  unordered_map<string,int>buff;
-  unordered_map<string,int>stus;
-  Skill* last_use_Skill;
+
+
+  //技能相关 
+  vector<Skill>skill; //当前精灵的所有技能,包含已经学习的和尚未学习的
+  unordered_map<string,bool>can_use; //标识技能是否可用
+  unordered_map<string,int>skill_map; //标识技能对应的学习等级
+  vector<Skill>can_use_skill;     //存储当前可以的使用的技能
+
+ //状态相关
+  unordered_map<string,int>buff;     // 用来标识当前精灵身上被对方或者己方所施加的跨回合技能
+  unordered_map<string,int>stus;     //标识当前精灵身上的异常状态   冰冻,灼伤,中毒等
+
+
+  Skill* last_use_Skill;           //标识当前精灵最后使用的技能,用来实现入模仿这样的技能
+
+  //基础点数
   int hp_base_point = 0;
   int ack_base_point=0;
   int def_base_point=0;
   int s_ack_base_point=0;
   int s_def_base_point=0;
   int speed_base_point=0;
-  vector<Skill>can_use_skill;
-  Elevs_Info elevs_info;
-  Hp _hp;
-  Ability abi;
-  Exp ep;
+
+
+  Elevs_Info elevs_info; //精灵的属性大全,包含精灵的各种属性 (属性/种族值等)
+  Hp _hp;     // 当前精灵剩余的血量
+  Ability abi; //当前精灵的能力值
+  Exp ep;     //经验值 
+
+  //命中
+  //命中的计算方法
+  //根据当前技能的命中率可以得到一个数值
+  //然后得到一个1-255之间的随机值
+  //然后用技能命中的数值*hit_per_lv/dodge_per_lv 如果大于随机值,表示命中,否则表示未命中
   int hit_per_lv=6;
   int dodge_per_lv=6;
+
+  //能力等级加成
+  //在计算能力的时候 等级 = lv+相应的加成
   int ack_addtion=0;
   int def_addtion=0;
   int s_ack_addtion=0;

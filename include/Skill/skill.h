@@ -62,7 +62,10 @@ public:
   void remove_buff(string name);
   bool in_buff(string name);
 private:
-Skill_Info skill_info;
-unordered_map<string,int>buff;
-PP p;
+  //节能信息原始数据
+  Skill_Info skill_info;
+  //技能的buff比如一击必死这种
+  unordered_map<string,int>buff;
+  //技能的pp值相关
+  PP p;
 };

@@ -224,6 +224,7 @@ int fight_Sys::get_skill_ack(Skill* sk)
 }
 void fight_Sys::deal_skill()
 {
+  //节能的选择
    Skill* sk;
    if(is_player)   
    {
@@ -233,6 +234,7 @@ void fight_Sys::deal_skill()
    {
      sk=computer_choice_skill();
    }
+   //处理进攻者身上的特殊buff
    //睡眠
    if(_attcker->stus_is_set("睡眠"))
    {
@@ -284,7 +286,11 @@ void fight_Sys::deal_skill()
        return;
      sk = _defender->get_last_use_Skill();
    }
-
+   //获取基础伤害
+   //节能伤害的计算
+   //1.获取技能的基础伤害
+   //2.如果基础伤害不为0(表征不是特殊技能) ,则计算其伤害
+   //3.对计算的伤害进行修正*(buff处理)
    int base_ack=0;
    if(sk->get_skill_base_ack()!=0)
    {
@@ -314,6 +320,7 @@ void fight_Sys::deal_skill()
    }
    if(base_ack<1)
      base_ack=1;
+   //处理节能效果
    if(sk->get_name() == "拍击")
    {
      sk->sub_cur_pp();
